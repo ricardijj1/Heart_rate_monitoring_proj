@@ -9,9 +9,7 @@ def filter_nondigits(data: list) -> list:
             x = x.strip()
             if x.isdigit():  
                 x = int(x)
-            else:
-                continue  
-        
+ 
         if isinstance(x, int) and x != 0:
             new_list.append(x)
     
@@ -31,12 +29,12 @@ def filter_nondigits(data: list) -> list:
  
 def filter_outliers(data: list) -> list:
     
-    new_list = []
+    outliers_list = []
     for y in data:
         if 30 < y < 250:
-           new_list.append(y)
+           outliers_list.append(y)
     
 
-    return new_list
+    return outliers_list
 
 

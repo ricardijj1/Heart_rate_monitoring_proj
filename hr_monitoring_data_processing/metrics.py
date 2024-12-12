@@ -9,12 +9,61 @@ def window_max(data: list, n: int) -> list:
         list[int]: list of maximums from each window (size should be len(data)//6)
     """
     maximums = []
+    
+    for x in range(0, len(data), n):
+        window = data[x:x + n] 
+        maximums.append(max(window))  
+    
+    
+   
+    return maximums    
     ...
 
+#function calculate the average in a window of 6 from data 
 
 def window_average(data: list, n: int) -> list:
-    pass
+
+    average_list= []
+    for y in range(0, len(data), n):
+    #window range for each loop 
+        window = data[y:y + n] 
+    #calculate average
+        average = sum(window) / len(window)
+    #append average to empty list 
+        average_list.append(average)
+    return average_list
+
+import statistics
+
 
 
 def window_stddev(data: list, n: int) -> list:
-    pass
+
+    stddev_list = [ ]
+    for a in range(0, len(data), n):
+        
+        window = data[a:a + n] 
+        
+        if len(window) <= 1:
+            continue
+
+        else:
+            stnd = statistics.stdev(window)
+            stddev_list.append(round(stnd,2))
+
+    return stddev_list
+
+        
+    
+    
+        
+            
+    
+        
+    
+        
+    return stddev_list
+    
+    
+
+
