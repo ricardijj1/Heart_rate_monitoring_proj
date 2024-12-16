@@ -4,12 +4,14 @@ def filter_nondigits(data: list) -> list:
     new_list = []
     
     for x in data:
+#taking string and striping out new lines and turning data into intergers 
 
         if isinstance(x, str):
             x = x.strip()
             if x.isdigit():  
                 x = int(x)
- 
+                
+ #appending all intergers into new list 
         if isinstance(x, int) and x != 0:
             new_list.append(x)
     
@@ -27,6 +29,8 @@ def filter_nondigits(data: list) -> list:
         list[int]: list of integers, with all non-digit strings removed
     """
  
+ #Filter function to filter outlier 
+
 def filter_outliers(data: list) -> list:
     
     outliers_list = []

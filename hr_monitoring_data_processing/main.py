@@ -9,11 +9,9 @@ from cleaner import filter_nondigits, filter_outliers
 import matplotlib.pyplot as plt
 
 
-def run(filename: str) -> None:
 
-    
-    
 
+def run(filename: str) -> None: 
     """
     Process heart rate data from the specified file, clean it, calculate metrics, 
     and save visualizations.
@@ -33,15 +31,39 @@ def run(filename: str) -> None:
 
     Returns:
         list[int], list[int], list[int]: You will return the maximums, averages, and stdevs (in this order).
-    """  
+    """ 
+    
     data = []
+    file = open(filename)
+    for line in file:
+        data.append(line)
+    file.close()
+    data = filter_nondigits(data)
+    data = filter_outliers(data)
+    
 
-    # open file and read into the `data` list
-    ...
+    max_values= window_max(data, 6)
 
-    # return all 3 lists
-    ...
+    average_values= window_average(data, 6)
 
+    stnd_values = window_stddev(data, 6)
+
+    fig, ax = plt.subplots()
+    ax.plot(max_values)
+    plt.savefig("images/averages.png")
+
+    fig, ax = plt.subplots()
+    ax.plot(stnd_values)
+    plt.savefig("images/maximums.png")
+
+
+    fig, ax = plt.subplots()
+    ax.plot(stnd_values)
+    plt.savefig("images/stdevs.png")
+ # return all 3 lists
+    return max_values, average_values, stnd_values
+    
 
 if __name__ == "__main__":
-    run("data/data1.txt")
+    run("data/data2.txt")
+    
