@@ -1,3 +1,5 @@
+import statistics 
+
 def window_max(data: list, n: int) -> list:
     """
     Calculate maximum value of every "n"-size window
@@ -9,27 +11,31 @@ def window_max(data: list, n: int) -> list:
         list[int]: list of maximums from each window (size should be len(data)//6)
     """
     maximums = []
-    
-       
-#loop going through range of data to calculta maxim value
-    for x in range(0, len(data), n):
-        window = data[x: x + n]
+
+    #loop going through range of data to calculta maxim value
+    for maxx in range(0, len(data), n):
+        window = data[maxx: maxx + n]
         maximums.append(max(window))  
-    
-    
-   
     return maximums    
     ...
 
-#function calculate the average in a window of  data 
+
 
 def window_average(data: list, n: int) -> list:
+    """
+    Calculate average value of every "n"-size window
 
+    Args:
+        data (list[int]): list of integers representing heart rate samples
+        n (int): The size of your window
+    Returns:
+        list[int]: list of averages from each window (size should be len(data)//6)
+    """
     average_list= []
-    for y in range(0, len(data), n):
+    for averages in range(0, len(data), n):
 
 #window range for each loop 
-        window = data[y:y + n] 
+        window = data[averages: averages + n] 
 
 #calculate average
         average = sum(window) / len(window)
@@ -38,18 +44,24 @@ def window_average(data: list, n: int) -> list:
         average_list.append((round(average,2)))
     return average_list
 
-import statistics
 
-#function calculate standard deviation of a list 
+
+
 
 def window_stddev(data: list, n: int) -> list:
+    """
+    Calculate standard deviation value of every "n"-size window
 
+    Args:
+        data (list[int]): list of integers representing heart rate samples
+        n (int): The size of your window
+    Returns:
+        list[int]: list of standard deviation values from each window (size should be len(data)//6)
+    """
     stddev_list = []
-
 #loop going throught data 
-
-    for a in range(0, len(data), n):
-        window = data[a:a + n] 
+    for stds in range(0, len(data), n):
+        window = data[stds:stds + n] 
         
         if len(window) <= 1:
             continue
